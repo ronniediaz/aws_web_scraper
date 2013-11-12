@@ -1,0 +1,10 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="amazon.master.cs" Inherits="webscraper.amazon.amazon" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<h3>amazon</h3>
+<ul><li><a href="<%= this.ResolveUrl("~") %>amazon/newproductmonitor.aspx">new product monitor</a></li><li><a href="<%= this.ResolveUrl("~") %>amazon/activeproductmonitors.aspx">active product monitors</a></li></ul>
+<hr />
+<asp:ContentPlaceHolder ID="amazoncontent" runat="server"/>
+
+</asp:Content>

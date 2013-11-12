@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="webscraper.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <asp:UpdatePanel ID="upnlUserAgents" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="false">
+    <ContentTemplate>
+    <asp:Panel ID="pnlUserAgents" runat="server" GroupingText="User Agent" CssClass="useragents">
+    Selected: <asp:Label ID="lblSelectedAgent" runat="server"></asp:Label>
+    &nbsp;&nbsp;
+    Change to:
+    <asp:DropDownList ID="ddlUserAgents" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlUserAgents_SelectedIndexChanged"></asp:DropDownList>
+    </asp:Panel>
+    </ContentTemplate>
+    <Triggers>
+    <asp:AsyncPostBackTrigger ControlID="ddlUserAgents" EventName="SelectedIndexChanged" />
+    </Triggers>
+    </asp:UpdatePanel>
+    <div id="content">
+    <h3>webscraper</h3>
+    <ul>
+    <li><a href="<%= this.ResolveUrl("~") %>default.aspx">home</a></li>
+    <li><a href="<%= this.ResolveUrl("~") %>amazon/default.aspx">amazon</a></li>
+    </ul>
+    <hr />
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+            </div>
+    </form>
+</body>
+</html>
